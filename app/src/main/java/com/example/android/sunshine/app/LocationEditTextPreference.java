@@ -32,9 +32,7 @@ import android.widget.EditText;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
-import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
-import com.google.android.gms.common.GooglePlayServicesRepairableException;
-import com.google.android.gms.location.places.ui.PlacePicker;
+//import com.google.android.gms.location.places.ui.PlacePicker;
 
 public class LocationEditTextPreference extends EditTextPreference {
     static final private int DEFAULT_MINIMUM_LOCATION_LENGTH = 2;
@@ -74,7 +72,7 @@ public class LocationEditTextPreference extends EditTextPreference {
 
                 // Launch the Place Picker so that the user can specify their location, and then
                 // return the result to SettingsActivity.
-                PlacePicker.IntentBuilder builder = new PlacePicker.IntentBuilder();
+                //PlacePicker.IntentBuilder builder = new PlacePicker.IntentBuilder();
 
 
                 // We are in a view right now, not an activity. So we need to get ourselves
@@ -82,7 +80,7 @@ public class LocationEditTextPreference extends EditTextPreference {
                 // SettingsActivity in this way, we can ensure the result of the Place Picker
                 // intent comes to the right place for us to process it.
                 Activity settingsActivity = (SettingsActivity) context;
-                try {
+                /*try {
                     settingsActivity.startActivityForResult(
                             builder.build(context), SettingsActivity.PLACE_PICKER_REQUEST);
 
@@ -96,7 +94,7 @@ public class LocationEditTextPreference extends EditTextPreference {
                     // by responding to these exceptions in the right moment. But I prefer a cleaner
                     // user experience, which is why you check all of this when the app resumes,
                     // and then disable/enable features based on that availability.
-                }
+                }*/
             }
         });
 

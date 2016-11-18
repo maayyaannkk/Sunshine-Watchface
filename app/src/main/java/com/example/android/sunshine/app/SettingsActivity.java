@@ -25,15 +25,14 @@ import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceManager;
 import android.support.design.widget.Snackbar;
-import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+
 import com.example.android.sunshine.app.data.WeatherContract;
 import com.example.android.sunshine.app.sync.SunshineSyncAdapter;
-import com.google.android.gms.location.places.Place;
-import com.google.android.gms.location.places.ui.PlacePicker;
-import com.google.android.gms.maps.model.LatLng;
+//import com.google.android.gms.location.places.Place;
+//import com.google.android.gms.location.places.ui.PlacePicker;
+//import com.google.android.gms.maps.model.LatLng;
 
 /**
  * A {@link PreferenceActivity} that presents a set of application settings.
@@ -64,7 +63,7 @@ public class SettingsActivity extends PreferenceActivity
         // If we are using a PlacePicker location, we need to show attributions.
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
             mAttribution = new ImageView(this);
-            mAttribution.setImageResource(R.drawable.powered_by_google_light);
+            //mAttribution.setImageResource(R.drawable.powered_by_google_light);
 
             if (!Utility.isLocationLatLonAvailable(this)) {
                 mAttribution.setVisibility(View.GONE);
@@ -193,28 +192,28 @@ public class SettingsActivity extends PreferenceActivity
         if (requestCode == PLACE_PICKER_REQUEST) {
             // Make sure the request was successful
             if (resultCode == RESULT_OK) {
-                Place place = PlacePicker.getPlace(data, this);
-                String address = place.getAddress().toString();
-                LatLng latLong = place.getLatLng();
+                //Place place = PlacePicker.getPlace(data, this);
+                //String address = place.getAddress().toString();
+                //LatLng latLong = place.getLatLng();
 
                 // If the provided place doesn't have an address, we'll form a display-friendly
                 // string from the latlng values.
-                if (TextUtils.isEmpty(address)) {
+                /*if (TextUtils.isEmpty(address)) {
                     address = String.format("(%.2f, %.2f)",latLong.latitude, latLong.longitude);
-                }
+                }*/
 
                 SharedPreferences sharedPreferences =
                         PreferenceManager.getDefaultSharedPreferences(this);
                 SharedPreferences.Editor editor = sharedPreferences.edit();
-                editor.putString(getString(R.string.pref_location_key), address);
+                //editor.putString(getString(R.string.pref_location_key), address);
 
                 // Also store the latitude and longitude so that we can use these to get a precise
                 // result from our weather service. We cannot expect the weather service to
                 // understand addresses that Google formats.
-                editor.putFloat(getString(R.string.pref_location_latitude),
+                /*editor.putFloat(getString(R.string.pref_location_latitude),
                         (float) latLong.latitude);
                 editor.putFloat(getString(R.string.pref_location_longitude),
-                        (float) latLong.longitude);
+                        (float) latLong.longitude);*/
                 editor.commit();
 
                 // Tell the SyncAdapter that we've changed the location, so that we can update
@@ -222,7 +221,7 @@ public class SettingsActivity extends PreferenceActivity
                 // to the PlacePicker widget result here instead of allowing the
                 // LocationEditTextPreference to handle these changes and invoke our callbacks.
                 Preference locationPreference = findPreference(getString(R.string.pref_location_key));
-                setPreferenceSummary(locationPreference, address);
+                //setPreferenceSummary(locationPreference, address);
 
                 // Add attributions for our new PlacePicker location.
                 if (mAttribution != null) {
