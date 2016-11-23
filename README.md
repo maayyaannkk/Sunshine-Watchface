@@ -17,6 +17,16 @@ Android Support RecyclerView 22.2.0
 Google Play Services GCM 7.0.0
 BumpTech Glide 3.5.2
 
+##How to Install 
+###Requirements 
+Java 7/8 Latest version of Android SDK and Android Build Tools 
+###To use an API key: 
+1) Obtain an API Key from openweathermap.org.
+
+2) Add the line below to your ~/.gradle/gradle.properties file (create the file if it does not exist already): MyOpenWeatherMapApiKey=”YOUR_API_KEY”.
+
+###Building 
+You can build the app with Android Studio or with ./gradlew assembleDebug command.
 
 <img src="https://github.com/maayyaannkk/Sunshine-Watchface/blob/master/Screenshot14.png" height="520" width="290">
 <br/>
